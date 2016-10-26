@@ -24,6 +24,12 @@ namespace Practice
                 }
                 Console.Write(Environment.NewLine + Environment.NewLine);
             }
+
+            int n = 3;
+            int[][] derp = new int[][] {new int[] {11, 2, 4}, new int[] {4, 5, 6}, new int[] {10, 8, -12}};
+            int sum = computeDifference(n, derp);
+            Console.WriteLine("Sum = " + sum);
+
             Console.ReadLine();
         }
 
@@ -67,6 +73,37 @@ namespace Practice
                 }
             }
             return matrix;
+        }
+
+        public static int computeDifference(int rows, int[][] diagonal)
+        {
+            List<int> diagonal1 = new List<int>();
+            List<int> diagonal2 = new List<int>();
+            int j = 0;
+
+            for (int i = 0; i < rows; i++)
+            {
+                diagonal1.Add(diagonal[i][j]);
+                j++;
+            }
+            j = 0;
+            for (int i = rows-1; i >= 0; i--)
+            {
+                diagonal2.Add(diagonal[i][j]);
+                j++;
+            }
+            int sum1 = 0;
+            foreach (var i in diagonal1)
+            {
+                sum1 += i;
+            }
+            int sum2 =0;
+            foreach (var i in diagonal2)
+            {
+                sum2 += i;
+            }
+
+            return Math.Abs(sum1 - sum2);
         }
     }
 }
